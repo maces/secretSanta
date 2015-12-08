@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by akr on 08.12.15.
@@ -9,7 +12,7 @@ public class SecretSanta {
 
     public SecretSanta(final List<String> participants) {
         this.participants = new ArrayList<String>(participants.size());
-        for(String participant : participants) {
+        for (String participant : participants) {
             this.participants.add(participant);
         }
     }
@@ -35,7 +38,7 @@ public class SecretSanta {
         List<String> participants = Arrays.asList("Alex", "Torben", "Sandra", "Jenny", "Tim", "Jens", "Marcus");
         SecretSanta santa = new SecretSanta(participants);
 
-        for(String participant : participants) {
+        for (String participant : participants) {
             santa.ziehen(participant);
         }
     }
