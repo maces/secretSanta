@@ -68,12 +68,15 @@ public class SecretSanta {
             user = participants.get(index);
         } while (user.getKey().equals(name)
                 || this.collected.containsValue(user.getKey())
-                || (this.collected.containsKey(user.getKey()) && this.collected.get(user.getKey()).equals(name)));
+                ||
+                // Wenn es der vorletzte Zug ist, soll es nicht dazu kommen, dass eine Person ausgeschlossen wird
+                // Wenn es 3 gibt und 2 sich selbst ziehen
+                // Voraussetzung: ungerade Anzahl an Teilnehmern
+                ((this.participants.size() % 2) != 0
+                        && this.collected.containsKey(user.getKey()) && this.collected.get(user.getKey()).equals(name)));
 
         this.collected.put(name, user.getKey());
 
         publisher.publish(address, "Secret Santaaa!", "Du hast %s gezogen! ;D", user.getKey());
     }
-// Peter zieht Sasch
-// Sasch zieht Peter
 }
