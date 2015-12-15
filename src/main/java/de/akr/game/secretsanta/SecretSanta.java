@@ -37,6 +37,7 @@ public class SecretSanta {
             participantsInProps.load(is);
         } catch (IOException ioe) {
             ioe.printStackTrace();
+            System.exit(1);
         }
         List<Pair<String, String>> participants = new ArrayList<>(participantsInProps.size());
         participantsInProps.forEach((name, mail) -> participants.add(new Pair<>((String) name, (String) mail)));
